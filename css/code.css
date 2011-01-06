@@ -1,0 +1,61 @@
+pre {
+    overflow: auto;
+}
+pre.code, pre.plain {
+    background: none repeat scroll 0 0 #F0F0F0;
+    display: none;
+    line-height: 1.1em;
+    overflow: auto;
+    padding: 1em 30px;
+}
+pre.diff {
+    width: 100em;
+}
+pre.shell {
+    background: none repeat scroll 0 0 black;
+    color: white;
+}
+ol.code {
+	background: #fff;
+    border-color: #F0F0F0 #D3D3D0 #D3D3D0;
+	border-top: 1px solid #D3D3D0;    
+	border-right: 1px solid #D3D3D0;
+    border-style: solid;
+    border-width: 1.8em 1px 1px;
+    color: #939399;
+    font-size: 0.75em;
+    line-height: 1.8em;
+    list-style-position: inside;
+    margin: 0 0 1em;
+    overflow: auto;
+    padding: 3px 0;
+    text-align: left;
+}
+ol.code li {
+    float: left;
+    margin: 0;
+    padding: 0 0 0 1%;
+    white-space: nowrap;
+    width: 99%;
+}
+ol.code li.even {
+    background: none repeat scroll 0 0 #F3F3F0;
+}
+ol.code li code {
+    color: #CC3300;
+    font: 1.2em courier,monospace;
+    padding-left: 0.5em;
+    white-space: pre;
+}
+.code .comment {
+    color: #939399;
+}
+.code .default {
+    color: #4444CC;
+}
+.code .keyword {
+    color: #337733;
+}
+.code .string {
+    color: #CC3300;
+}

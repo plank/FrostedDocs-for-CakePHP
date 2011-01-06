@@ -7,7 +7,12 @@
 	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 	<script type="text/javascript" src="js/dump.js"></script>
-	<script type="text/javascript" src="js/new-app.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/docs.css" />
+		<link rel="stylesheet" type="text/css" href="css/code.css" />
+	<link rel="stylesheet" type="text/css" href="css/app.css" />
 	
 	<title>CakeDocs Extreme</title>
 	
@@ -15,23 +20,36 @@
 
 <body>
 
-	<div id="controls">
-		<a id="start" href="#">Start</a>
-		<a id="pause" href="#">Pause</a>		
-	</div>
+	<div id="topmenu">
+		
+		<img id="loader" src="images/loader.gif" width="16" height="16" alt="loading..." />
+		
+		<ul id="ajax-controls">
+			<li><a id="start" href="#">Fetch Menu</a></li>
+			<li><a id="pause" href="#">Abort</a></li>
+		</ul>
+		
+		<ul id="localstore-controls">	
+			<li><a id="save" href="#">Save to Localstore</a></li>
+			<li><a id="load" href="#">Load from Localstore</a></li>
+			<li><a id="clear" href="#">Clear Localstore</a></li>
+		</ul>
+		
+	</div><!-- #top-menu -->
 	
-	<hr />
+	<div id="wrapper">
 
-	<div id="nav">
-	</div><!-- #nav -->
+		<div id="sidebar">
+			<ul id="nav">
+			</ul><!-- #nav -->
+		</div><!-- #sidebar -->	
+
+		<div id="content">
+			<div id="doc">
+			</div><!-- #doc -->
+		<!-- #content -->
 	
-	<div id="doc">
-	</div><!-- #doc -->	
-
-	<hr />
-
-	<div id="debug">
-	</div><!-- #debug -->	
+	</div><!-- #wrapper -->
 
 </body>
 </html>
