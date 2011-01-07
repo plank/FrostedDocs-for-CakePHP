@@ -5,7 +5,7 @@
 */
 var CONFIG = {
 	cake_url:   'http://book.cakephp.org',
-	local_url:  'http://localhost'
+	local_url:  'http://plankdesign.com/frosteddocs'
 };
 
 var FLAGS = {
@@ -30,10 +30,11 @@ var PAGES = {};
 $(document).ready(function() {
 	
 	// INIT
-	if(localStorage.getItem('menu')) {
+	$.getJSON('menu.json', {}, function(data) {
+		localStorage.setItem('menu', JSON.stringify(data));
 		MENU = JSON.parse(localStorage.getItem('menu'));
 		paint_menu();
-	}
+	});
 	
 	// $('body').css('height', $(window).height());
 	
@@ -69,8 +70,11 @@ $(document).ready(function() {
 	
 	$('#clear').click(function() {
 		localStorage.clear();
-		$('#nav').empty();
-		MENU = [];
+		$.getJSON('menu.json', {}, function(data) {
+			localStorage.setItem('menu', JSON.stringify(data));
+			MENU = JSON.parse(localStorage.getItem('menu'));
+			paint_menu();
+		});
 		return false;
 	});
 	
