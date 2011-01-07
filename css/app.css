@@ -51,6 +51,16 @@ body {
 	border-radius: 8px;
 }
 
+#plank {
+	position: absolute;
+	top: 1px;
+	right: 20px;
+}
+
+#topmenu #plank:hover {
+	background: transparent;
+}
+
 #ajax-controls {
 	position: absolute;
 	left: 45px;
@@ -58,7 +68,7 @@ body {
 
 #localstore-controls {
 	position: absolute;
-	right: 0px;
+	right: 80px;
 }
 
 #wrapper {
