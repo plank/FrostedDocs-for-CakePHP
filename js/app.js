@@ -58,7 +58,12 @@ $(document).ready(function() {
 	});
 	
 	$('#load').click(function() {
-		MENU = JSON.parse(localStorage.getItem('menu'));
+		$.getJSON('menu.json', {}, function(data) {
+			localStorage.setItem('menu', JSON.stringify(data));
+			MENU = JSON.parse(localStorage.getItem('menu'));
+			paint_menu();
+		});
+		
 		return false;
 	});
 	
