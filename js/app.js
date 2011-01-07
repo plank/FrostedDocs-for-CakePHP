@@ -72,7 +72,17 @@ $(document).ready(function() {
 	$('#nav a').live('click', function() {
 		
 		var this_href = this.href;
-		console.log(PAGES[this.href]);
+		
+		$('.current').removeClass('current');
+		
+		var parents = $(this).parents('li').each(function() {
+			$(this).addClass('current');
+		});
+		
+		$(this).next('ul.child').slideDown(100).addClass('open');
+		
+		$("#nav li:not(.current) ul").slideUp(100);
+		
 		
 		if(!localStorage.getItem(this_href)) {
 			$('#nav a.current').removeClass('current');
@@ -82,7 +92,7 @@ $(document).ready(function() {
 				data: null,
 				type: 'GET',
 				beforeSend: function() {
-					$('#nav a.current').append(" <span class='loading'>loading...</span>");
+					$('#nav a.current').append(" <span class='loading'> - loading...</span>");
 				},
 				success: function(data) {
 					$('#nav a.current').find("span").remove();
@@ -108,7 +118,6 @@ $(document).ready(function() {
 				image.src = new_src; //'http://book.cakephp.org'+image.src;
 			});
 		}
-		// $('#doc').load('load.php?url='+this.href);
 		return false;
 	});
 	
@@ -190,16 +199,11 @@ var populate_menu = function(node) {
 					$.each(child_links, function(index, item) {
 						var fixed_url = item['href'].replace(CONFIG['local_url'], CONFIG['cake_url']);
 						var child_node = {title: item['text'], href: fixed_url, scanned: false, children: [] };
-						// console.log(child_node, child_node['title']);
 						node['children'].push(child_node);
 						populate_menu(child_node);
 					});
 
 				}
-				else {
-					// move down to the next node
-				}
-
 			}
 		});
 	}
@@ -221,13 +225,10 @@ var generate_menu = function(item, last_item) {
 	var output = []; // output buffer
 	var child_count = item['children'].length - 1;
 	
-	
-	
 	output.push("<li><a href='"+item['href']+"'>"+item['title']+"</a>");
 	if(child_count > 0) {
-		output.push("<ul>");
+		output.push("<ul style='display: none;' class='child'>");
 		$.each(item['children'], function(index, child_item) {
-			// console.log('index: '+index+', child_count:'+child_count, 'index == child_count?');
 			if(index == child_count) {
 				output.push( generate_menu(child_item, true) );
 			}
