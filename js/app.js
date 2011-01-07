@@ -126,6 +126,10 @@ $(document).ready(function() {
 		return false;
 	});
 	
+	$('#search').keyup(function() {
+		search_menu( $(this).val() );
+	});
+	
 });
 
 // AJAX spinner
@@ -216,6 +220,17 @@ var populate_menu = function(node) {
 	paint_menu();
 	
 };
+
+var search_menu = function(query) {
+	var nodes = $('#nav a');
+	if(query.length > 2) {
+		$.each(nodes, function(index, item) {
+			
+			console.log( levenshtein(query, item.text) );
+		});
+	}
+	console.log(query);
+}
 
 var paint_menu = function() {
 	var output = [];
