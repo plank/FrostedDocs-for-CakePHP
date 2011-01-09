@@ -35,9 +35,7 @@ $(document).ready(function() {
 		MENU = JSON.parse(localStorage.getItem('menu'));
 		paint_menu();
 	});
-	
-	// $('body').css('height', $(window).height());
-	
+		
 	// CLICK EVENTS
 	$('#start').click(function(e) {
 		localStorage.removeItem('menu');
@@ -63,8 +61,7 @@ $(document).ready(function() {
 			localStorage.setItem('menu', JSON.stringify(data));
 			MENU = JSON.parse(localStorage.getItem('menu'));
 			paint_menu();
-		});
-		
+		});		
 		return false;
 	});
 	
@@ -131,32 +128,55 @@ $(document).ready(function() {
 	});
 	
 	// SEARCH EVENTS
-	$('#search').keyup(function() {
-		if( $(this).val() == '' ) {
-			$('#search-results').fadeOut(150, function() {
-				$(this).empty();
-				$('#nav').fadeIn(150);
-			});			
-		}
-		else {
-			$('#nav').fadeOut(150);
-			$('#search-results').show();
-			search_menu( $(this).val() );
-		}		
-	});
-	
-	$(document).keyup(function(e) {
-		
-		console.log(e);
-		
-		// escape key
+	$('#search').keyup(function(e) {
 		if(e.keyCode == 27) {
-			if( $('#search').is(':focus') ) {
-				$('#search').val('').trigger('keyup');				
+			$(this).val('');
+		}
+		if(e.keyCode != 13) {						
+			if( $(this).val() == '' ) {
+				$('#search-results').fadeOut(150, function() {
+					$(this).empty();
+					$('#nav').fadeIn(150);
+				});			
+			}
+			else {
+				$('#nav').fadeOut(150);
+				$('#search-results').show();
+				search_menu( $(this).val() );
 			}
 		}
+		else {
+			var triggered_link = $('#search-results li:first a');
+			triggered_link.addClass('current');
+			$.ajax({
+				url: 'load.php?url='+triggered_link.attr('href'),
+				data: null,
+				type: 'GET',
+				beforeSend: function() {
+					$('#search-results a.current').append(" <span class='loading'> - loading...</span>");
+				},
+				success: function(data) {
+					$('#search-results a.current').find("span").remove();
+					$('#doc').html(data);
+					var images = $('#doc').find('img');
+					$.each(images, function(index, image) {
+						var src = image.src;
+						var new_src = src.replace(CONFIG['local_url'], CONFIG['cake_url']);
+						image.src = new_src; //'http://book.cakephp.org'+image.src;
+					});
+					localStorage.setItem(triggered_link.attr('href'), data);
+				}
+			});
+			return false;
+		}
 		
 	});
+	
+	$('#sidebar form').submit(function() {	
+		return false;
+	});
+	
+	
 	
 });
 

@@ -60,3 +60,19 @@
 	padding: 15px;
 	background: #fff;
 }
+
+#content table {
+	width: 100%;
+}
+
+#content th {
+	text-align: left;
+}
+
+#content tr {
+	
+}
+
+#content td {
+	
+}
