@@ -78,7 +78,7 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	$('#nav a').live('click', function() {
+	$('#nav a, #search-results a').live('click', function() {
 		
 		var this_href = this.href;
 		
@@ -128,6 +128,34 @@ $(document).ready(function() {
 			});
 		}
 		return false;
+	});
+	
+	// SEARCH EVENTS
+	$('#search').keyup(function() {
+		if( $(this).val() == '' ) {
+			$('#search-results').fadeOut(150, function() {
+				$(this).empty();
+				$('#nav').fadeIn(150);
+			});			
+		}
+		else {
+			$('#nav').fadeOut(150);
+			$('#search-results').show();
+			search_menu( $(this).val() );
+		}		
+	});
+	
+	$(document).keyup(function(e) {
+		
+		console.log(e);
+		
+		// escape key
+		if(e.keyCode == 27) {
+			if( $('#search').is(':focus') ) {
+				$('#search').val('').trigger('keyup');				
+			}
+		}
+		
 	});
 	
 });
@@ -220,6 +248,29 @@ var populate_menu = function(node) {
 	paint_menu();
 	
 };
+
+var search_menu = function(query) {
+	$('#search-results').empty();
+	var nodes = $('#nav a').clone();
+	var matches = [];
+	$.each(nodes, function(index, item) {
+		var scored_node = { 
+			score: item.text.toLowerCase().score(query.toLowerCase()),
+			node: item };	
+		matches.push(scored_node);
+	});
+	matches.sort(compare_scores);
+	results = matches.slice(0,10);
+	$.each(results, function(index, item) {
+		if(item.score > 0) {
+			$('#search-results').append("<li><a href='"+item.node.href+"'>"+item.node.text+"</a></li>");
+		}
+	});	
+}
+
+var compare_scores = function(a,b) {
+	return b.score - a.score;
+}
 
 var paint_menu = function() {
 	var output = [];

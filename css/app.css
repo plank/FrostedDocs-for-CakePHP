@@ -4,7 +4,7 @@ html {
 }
 
 body {
-	height: 100%;
+	min-height: 100%;
 	background: url('../images/sidebar-background.jpg') 0px 0px repeat-y;
 	font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica, Arial, sans-serif;
 	font-size: 12px;
@@ -88,35 +88,56 @@ body {
 }
 
 /* SIDEBAR */
-#nav ul {
+
+#sidebar form {
+	border-bottom: 1px dashed #788398;
+	padding: 0 0 20px 0;
+	margin: 0 30px 20px 10px;
+}
+
+#search {
+	border: 0;
+	background: url('../images/search-field.png') 0px 0px no-repeat;
+	font-size: 14px;
+	color: #999;
+	padding: 0 50px 0 20px;
+	width: 248px;
+	height: 49px;
+}
+
+#search-results {
+	
+}
+
+#nav ul, #search-results ul {
 	font-weight: bold;
 	padding: 6px 0 0 10px;
 }
 
-#nav li a {
+#nav li a, #search-results li a {
 	padding: 1px 8px;
 	text-decoration: none;
 }
 
-#nav li a:hover {
+#nav li a:hover, #search-results li a:hover {
 	background: #bac6d6;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
 }
 
-#nav a.current {
+#nav a.current, #search-results a.current {
 	background: #ebedaf;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
 }
 
-#nav a.current:hover {
+#nav a.current:hover, #search-results a.current:hover {
 	background: #ebedaf;
 }
 
-#nav li a{
+#nav li a, #search-results li a {
 	font-weight: bold;
 }
 
@@ -125,11 +146,11 @@ body {
 	font-weight: normal;
 }
 
-#nav li {
+#nav li, #search-results li {
 	padding: 0px 0px 6px 0;
 }
 
-#nav a {
+#nav a, #search-results a {
 	font-size: 13px;
 	color: #111111;
 }
