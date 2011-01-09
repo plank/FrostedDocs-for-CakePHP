@@ -5,7 +5,7 @@ html {
 
 body {
 	min-height: 100%;
-	background: url('../images/sidebar-background.jpg') 0px 0px repeat-y;
+	background: url('../images/sidebar-background-shadow.jpg') 0px 0px repeat-y;
 	font-family: HelveticaNeue-Light, HelveticaNeue, Helvetica, Arial, sans-serif;
 	font-size: 12px;
 }
@@ -79,12 +79,12 @@ body {
 	position: absolute;
 	padding: 20px 0 20px 20px;
 	width: 380px;
-	background: url('../images/sidebar-background.jpg') 0px 0px repeat-y;
+	background: url('../images/sidebar-background-shadow.jpg') 0px 0px repeat-y;
 }
 
 #content {
 	max-width: 100%;
-	padding: 20px 20px 20px 420px;
+	padding: 20px 30px 20px 430px;
 }
 
 /* SIDEBAR */
