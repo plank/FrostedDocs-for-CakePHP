@@ -32,7 +32,21 @@
 }
 
 #content h3 {
-	
+	font-size: 16px;
+	padding-bottom: 3px;
+	margin-bottom: 10px;
+	border-bottom: 1px dashed #dedede;
+}
+
+#content h3 a {
+	font-style: italic;
+	font-weight: normal;
+	margin-right: 5px;
+	font-size: 11px;
+}
+
+#content div.body {
+	margin: 0 0 50px 0;
 }
 
 #content ul {
@@ -55,6 +69,12 @@
 	padding-bottom: 8px;
 }
 
+#content ol.code li {
+	line-height: 100%;
+	padding-bottom: 2px;
+    padding-top: 2px;
+}
+
 #content pre.code {
 	border: 1px solid #dedede;
 	padding: 15px;
@@ -63,10 +83,16 @@
 
 #content table {
 	width: 100%;
+	border-top: 1px solid #dedede;
+	border-right: 1px solid #dedede;
+	margin: 5px 0 15px 0;
 }
 
 #content th {
+	padding: 5px 6px;
 	text-align: left;
+	background: #333;
+	color: #fff;
 }
 
 #content tr {
@@ -74,5 +100,7 @@
 }
 
 #content td {
-	
+	border-left: 1px solid #dedede;
+	border-bottom: 1px solid #dedede;
+	padding: 5px 6px;
 }

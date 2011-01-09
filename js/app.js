@@ -164,6 +164,12 @@ $(document).ready(function() {
 						var new_src = src.replace(CONFIG['local_url'], CONFIG['cake_url']);
 						image.src = new_src; //'http://book.cakephp.org'+image.src;
 					});
+					var links = $('#doc').find('a');
+					$.each(links, function(index, link) {
+							var href = link.href;
+							var new_href = href.replace(CONFIG['local_url'], CONFIG['cake_url']);
+							link.href = new_src; //'http://book.cakephp.org'+link.href;
+					});
 					localStorage.setItem(triggered_link.attr('href'), data);
 				}
 			});
